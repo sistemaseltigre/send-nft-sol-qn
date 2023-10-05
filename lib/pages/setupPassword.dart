@@ -14,13 +14,16 @@ class _SetupPasswordScreenState extends State<SetupPasswordScreen> {
   final formKey = GlobalKey<FormState>();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
-  final storage = FlutterSecureStorage();
+  final storage = const FlutterSecureStorage();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Set Up Password')),
+      appBar: AppBar(
+        title: const Text('Set Up Password'),
+        elevation: 0.0,
+      ),
       body: Padding(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Form(
           key: formKey,
           child: Column(
@@ -28,7 +31,7 @@ class _SetupPasswordScreenState extends State<SetupPasswordScreen> {
               TextFormField(
                   controller: passwordController,
                   obscureText: true,
-                  decoration: InputDecoration(labelText: 'Password'),
+                  decoration: const InputDecoration(labelText: 'Password'),
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Password is required';
@@ -53,7 +56,7 @@ class _SetupPasswordScreenState extends State<SetupPasswordScreen> {
               const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: _submit,
-                child: Text('Submit'),
+                child: const Text('Submit'),
               )
             ],
           ),
@@ -64,7 +67,7 @@ class _SetupPasswordScreenState extends State<SetupPasswordScreen> {
 
   void _submit() async {
     if (formKey.currentState!.validate()) {
-      print("validate");
+      debugPrint("validate");
       if (passwordController.text != confirmPasswordController.text) {
         return;
       }
