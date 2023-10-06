@@ -14,24 +14,6 @@ This is a Solana wallet developed with Flutter. It allows users to store, send, 
 * Flutter SDK ('>=3.0.2 <4.0.0')
 
 ### Installation
-1. Clone the repository:
-## Solana Wallet
-
-This is a Solana wallet developed with Flutter. It allows users to store, send, and receive Solana tokens and NFTs.
-
-### Features
-
-* Store, send, and receive Solana tokens and NFTs
-* View account balance and history
-* Connect to dApps
-* Secure login with PIN or fingerprint
-
-### Requirements
-
-* Flutter SDK (>= 3.0)
-* Solana SDK (>= 1.10.0)
-
-### Installation
 
 1. Clone the repository:
 ```
