@@ -1,16 +1,65 @@
-# web3_login
+## Solana Wallet
 
-A new Flutter project.
+This is a Solana wallet developed with Flutter. It allows users to store, send, and receive Solana tokens and NFTs.
 
-## Getting Started
+### Features
 
-This project is a starting point for a Flutter application.
+* Store, send, and receive Solana tokens and NFTs
+* View account balance and history
+* Connect to dApps (In Progress)
+* Secure login with PIN or fingerprint (In Progress)
 
-A few resources to get you started if this is your first Flutter project:
+### Requirements
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+* Flutter SDK ('>=3.0.2 <4.0.0')
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Installation
+1. Clone the repository:
+## Solana Wallet
+
+This is a Solana wallet developed with Flutter. It allows users to store, send, and receive Solana tokens and NFTs.
+
+### Features
+
+* Store, send, and receive Solana tokens and NFTs
+* View account balance and history
+* Connect to dApps
+* Secure login with PIN or fingerprint
+
+### Requirements
+
+* Flutter SDK (>= 3.0)
+* Solana SDK (>= 1.10.0)
+
+### Installation
+
+1. Clone the repository:
+```
+git@github.com:sistemaseltigre/send-nft-sol-qn.git
+```
+2. Install the dependencies:
+```
+cd send-nft-sol-qn
+flutter pub get
+```
+3. Run the app:
+```
+flutter run
+```
+### Usage
+To use the wallet, simply create a new account or import an existing one. Then, you can start sending and receiving Solana tokens and NFTs.
+
+To send Solana tokens, enter the recipient's address and the amount of tokens you want to send. Then, tap the "Send" button.
+
+To send an NFT, select the NFT you want to send and enter the recipient's address. Then, tap the "Send" button.
+
+To receive Solana tokens or NFTs, simply provide your wallet address to the sender.
+
+Contributing
+We welcome contributions to this project. If you have any ideas or suggestions, please feel free to open a pull request.
+
+License
+This project is licensed under the MIT License.
+
+
+
