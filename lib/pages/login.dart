@@ -10,7 +10,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
   final _formKey = GlobalKey<FormState>();
   final passwordController = TextEditingController();
   bool validationFailed = false;
@@ -34,6 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
+  @override
   Widget build(BuildContext context) {
     if (_loading) {
       return const Center(
@@ -72,9 +72,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   TextFormField(
                       controller: passwordController,
                       obscureText: true,
-                      decoration: const InputDecoration(
-                        labelText: 'Password',
-                        border: OutlineInputBorder(),
+                      decoration: InputDecoration(
+                        hintText: 'Password',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
                       ),
                       validator: (value) {
                         if (value != password) {
@@ -92,15 +94,35 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 8),
                   ElevatedButton(
                     onPressed: _onSubmit,
-                    child: const Text('Login'),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.tealAccent.shade700,
+                        minimumSize: const Size(220, 50),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                          20,
+                        ))),
+                    child: const Text(
+                      'Login',
+                      style: TextStyle(fontSize: 17),
+                    ),
                   ),
                   const SizedBox(height: 32),
                   Center(
                     child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.tealAccent.shade700,
+                          minimumSize: const Size(220, 50),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                            20,
+                          ))),
                       onPressed: () {
                         onDifferentAccountPressed(context);
                       },
-                      child: const Text('Use different Account'),
+                      child: const Text(
+                        'Use different Account',
+                        style: TextStyle(fontSize: 17),
+                      ),
                     ),
                   ),
                 ],

@@ -5,8 +5,8 @@ import 'package:web3_login/services/burn_nft.dart';
 import 'package:web3_login/services/send_nft.dart';
 
 class ShowNftPage extends StatefulWidget {
-  NFT nft;
-  ShowNftPage({super.key, required this.nft});
+  final NFT nft;
+  const ShowNftPage({super.key, required this.nft});
 
   @override
   State<ShowNftPage> createState() => _ShowNftPageState();
@@ -27,7 +27,7 @@ class _ShowNftPageState extends State<ShowNftPage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       body: Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -41,27 +41,27 @@ class _ShowNftPageState extends State<ShowNftPage> {
                   ),
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Padding(
                 padding: const EdgeInsets.only(left: 80),
                 child: Text(
                   textAlign: TextAlign.end,
                   widget.nft.name!,
-                  style: TextStyle(fontSize: 20),
+                  style: const TextStyle(fontSize: 20),
                 ),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Padding(
                 padding: const EdgeInsets.only(left: 80),
                 child: Text(
                   widget.nft.description!,
-                  style: TextStyle(fontSize: 20),
+                  style: const TextStyle(fontSize: 20),
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               TextButton(
                   onPressed: _showSendDialog,
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
@@ -75,10 +75,10 @@ class _ShowNftPageState extends State<ShowNftPage> {
                       SizedBox(width: 40),
                     ],
                   )),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               TextButton(
                   onPressed: _showBurnDialog,
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
@@ -104,9 +104,10 @@ class _ShowNftPageState extends State<ShowNftPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Send NFT'),
+          title: const Text('Send NFT'),
           content: TextField(
-            decoration: InputDecoration(labelText: 'Enter Destination Wallet'),
+            decoration:
+                const InputDecoration(labelText: 'Enter Destination Wallet'),
             controller: destinationController,
             onChanged: (value) {
               setState(() {});
@@ -114,13 +115,13 @@ class _ShowNftPageState extends State<ShowNftPage> {
           ),
           actions: <Widget>[
             TextButton(
-              child: Text('CANCEL'),
+              child: const Text('CANCEL'),
               onPressed: () {
                 Navigator.pop(context);
               },
             ),
             TextButton(
-              child: Text('Send'),
+              child: const Text('Send'),
               onPressed: () async {
                 address = destinationController.text;
                 await send_nft(widget.nft, address);
@@ -138,19 +139,19 @@ class _ShowNftPageState extends State<ShowNftPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Warning'),
-          content: Text(
+          title: const Text('Warning'),
+          content: const Text(
             "Are you sure you want to Burn this nft?",
           ),
-          actions: <Widget>[
+          actions: [
             TextButton(
-              child: Text('CANCEL'),
+              child: const Text('CANCEL'),
               onPressed: () {
                 Navigator.pop(context);
               },
             ),
             TextButton(
-              child: Text('BURN'),
+              child: const Text('BURN'),
               onPressed: () {
                 burn_nft(widget.nft);
               },
