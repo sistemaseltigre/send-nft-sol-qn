@@ -35,10 +35,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: Colors.tealAccent.shade700,
         title: const Text('My Wallet'),
         actions: [
           IconButton(
-            icon: Icon(Icons.settings),
+            icon: const Icon(Icons.settings),
             onPressed: () {
               GoRouter.of(context).go("/config");
             },
@@ -46,12 +48,12 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: ListView(
           children: [
             Card(
               child: Padding(
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 child: Column(
                   children: [
                     const Text('Wallet Address',
@@ -62,8 +64,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SizedBox(
-                            width: 200,
-                            child: Text(_publicKey ?? 'Loading...')),
+                          width: 200,
+                          child: Text(
+                            _publicKey ?? 'Loading...',
+                            style: const TextStyle(fontSize: 17),
+                          ),
+                        ),
                         IconButton(
                           icon: const Icon(Icons.copy),
                           onPressed: () {
@@ -81,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Card(
               child: Padding(
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 child: Column(
                   children: [
                     const Text('Balance',
@@ -91,7 +97,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(_balance ?? 'Loading...'),
+                        Text(
+                          _balance ?? 'Loading...',
+                          style: const TextStyle(fontSize: 17),
+                        ),
                         IconButton(
                           icon: const Icon(Icons.refresh),
                           onPressed: () {
@@ -112,11 +121,14 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Card(
               child: Padding(
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text('Mint NFT'),
+                    const Text(
+                      'Mint NFT',
+                      style: TextStyle(fontSize: 17),
+                    ),
                     IconButton(
                       icon: const Icon(Icons.arrow_forward),
                       onPressed: () {
@@ -129,11 +141,14 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Card(
               child: Padding(
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text('Show Wallet NFTs'),
+                    const Text(
+                      'Show Wallet NFTs',
+                      style: TextStyle(fontSize: 17),
+                    ),
                     IconButton(
                       icon: Icon(_showNftExpanded
                           ? Icons.expand_less
@@ -150,7 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             if (_showNftExpanded)
               SingleChildScrollView(
-                  child: Container(
+                  child: SizedBox(
                       height: _showNftExpanded ? 200 : 0,
                       child: FutureBuilder<List<NFT>>(
                           future: fetchNfts(_publicKey!),
@@ -171,7 +186,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   itemBuilder: (context, index) {
                                     if (nfts == null) {
                                       return IconButton(
-                                        icon: Icon(Icons.refresh),
+                                        icon: const Icon(Icons.refresh),
                                         onPressed: () {
                                           fetchNfts(_publicKey!);
                                         },
@@ -191,7 +206,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       );
                                     } else {
                                       return IconButton(
-                                        icon: Icon(Icons.refresh),
+                                        icon: const Icon(Icons.refresh),
                                         onPressed: () {
                                           setState(() {
                                             fetchNfts(_publicKey!);
@@ -204,11 +219,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           }))),
             Card(
               child: Padding(
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text('Log out'),
+                    const Text(
+                      'Log out',
+                      style: TextStyle(fontSize: 17),
+                    ),
                     IconButton(
                       icon: const Icon(Icons.logout),
                       onPressed: () {
@@ -279,19 +297,19 @@ class _HomeScreenState extends State<HomeScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Send Sol'),
+          title: const Text('Send SOL'),
           content: Column(
             children: [
               TextField(
-                decoration:
-                    InputDecoration(labelText: 'Enter Destination Wallet'),
+                decoration: const InputDecoration(
+                    labelText: 'Enter Destination Wallet'),
                 controller: destinationController,
                 onChanged: (value) {
                   setState(() {});
                 },
               ),
               TextField(
-                decoration: InputDecoration(labelText: 'Enter Ammount'),
+                decoration: const InputDecoration(labelText: 'Enter Ammount'),
                 controller: ammountController,
                 onChanged: (value) {
                   setState(() {});
@@ -301,13 +319,13 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           actions: <Widget>[
             TextButton(
-              child: Text('CANCEL'),
+              child: const Text('CANCEL'),
               onPressed: () {
                 Navigator.pop(context);
               },
             ),
             TextButton(
-              child: Text('Send'),
+              child: const Text('Send'),
               onPressed: () async {
                 address = destinationController.text;
                 ammount = double.parse(ammountController.text);

@@ -21,16 +21,21 @@ class _GeneratePhraseScreenState extends State<GeneratePhraseScreen> {
     _generateMnemonic();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Recovery Phrase")),
+      appBar: AppBar(
+        backgroundColor: Colors.tealAccent.shade700,
+        title: const Text("Recovery Phrase"),
+        elevation: 0.0,
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Flexible(
             child: Container(
               color: Colors.orange[700],
-              padding: EdgeInsets.all(8),
+              padding: const EdgeInsets.all(8),
               child: const Text(
                 'Important! Copy and save the recovery phrase in a secure location. This cannot be recovered later.',
                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -42,7 +47,7 @@ class _GeneratePhraseScreenState extends State<GeneratePhraseScreen> {
             children: [
               Center(
                 child: Container(
-                  padding: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
                   child: Text(
                     _mnemonic,
                     textAlign: TextAlign.justify,
@@ -78,10 +83,25 @@ class _GeneratePhraseScreenState extends State<GeneratePhraseScreen> {
                       });
                     },
                   ),
-                  const Text("I have stored the recovery phrase securely"),
+                  const Text(
+                    "I have stored the recovery phrase securely",
+                    style: TextStyle(fontSize: 17),
+                  ),
                 ],
               ),
+              const SizedBox(
+                height: 20,
+              ),
               ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: _copied
+                        ? Colors.purple.shade600
+                        : Colors.tealAccent.shade700,
+                    minimumSize: const Size(250, 50),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                      20,
+                    ))),
                 onPressed: _copied
                     ? () {
                         GoRouter.of(context).go("/passwordSetup/$_mnemonic");
@@ -89,7 +109,10 @@ class _GeneratePhraseScreenState extends State<GeneratePhraseScreen> {
                     : () {
                         GoRouter.of(context).go("/");
                       },
-                child: Text(_copied ? 'Continue' : 'Go Back'),
+                child: Text(
+                  _copied ? 'Continue' : 'Go Back',
+                  style: const TextStyle(fontSize: 17),
+                ),
               )
             ],
           ),
